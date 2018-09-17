@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Azure/terraform-azurerm-vnetpeering.svg?branch=master)](https://travis-ci.org/Azure/terraform-azurerm-vnetpeering)
 
-## Encrypt an existing  Virtual Machine in Azure
+## Create Virtual Network Peerings between two Virtual Netowks
 This module implements Azure Disk Encryption feature to encrypt currently running VM's.  ADE leverages the industry standard BitLocker feature of Windows and DM-Crypt feature of linux to provide volume encryption for the OS and data disks.
 This modue helps create virtual network peering across same region, different region and different subscriptions too. Virtual network peering enables you to seamlessly connect two Azure virtual networks. Once peered, the virtual networks appear as one, for connectivity purposes. The traffic between virtual machines in the peered virtual networks is routed through the Microsoft backbone infrastructure, much like traffic is routed between virtual machines in the same virtual network, through private IP addresses only. Azure supports:
 
