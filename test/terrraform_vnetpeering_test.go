@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	"github.com/gruntwork-io/terratest/modules/test-structure"
 )
 
 func TestTerraformvnetpeering(t *testing.T) {
@@ -27,8 +26,13 @@ func TestTerraformvnetpeering(t *testing.T) {
 	test_structure.RunTestStage(t, "validate", func() {
 		terraformOptions := test_structure.LoadTerraformOptions(t, fixtureFolder)
 
-		vnetpeeringID := terraform.Output(t, terraformOptions, "test_vnetpeering_id")
-		if len(vnetpeeringID) <= 0 {
+		vnetpeering1ID := terraform.Output(t, terraformOptions, "vnet_peer_1_id")
+		if len(vnetpeering1ID) <= 0 {
+			t.Fatal("Wrong output")
+		}
+
+		vnetpeering2ID := terraform.Output(t, terraformOptions, "vnet_peer_2_id")
+		if len(vnetpeering2ID) <= 0 {
 			t.Fatal("Wrong output")
 		}
 	})
