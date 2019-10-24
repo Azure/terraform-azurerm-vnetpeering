@@ -55,4 +55,18 @@ resource "azurerm_virtual_network_peering" "vnet_peer_2" {
   allow_virtual_network_access = "${var.allow_virtual_network_access}"
   allow_forwarded_traffic      = "${var.allow_forwarded_traffic}"
   use_remote_gateways          = "${var.use_remote_gateways}"
+  count                        = "${var.allow_cross_subscription_peering ? 0 : 1}"
+}
+
+
+resource "azurerm_virtual_network_peering" "vnet_peer_2_sub2" {
+  name                         = "${var.vnet_peering_names[1]}"
+  resource_group_name          = "${data.azurerm_resource_group.rg2.name}"
+  virtual_network_name         = "${data.azurerm_virtual_network.vnet2.name}"
+  remote_virtual_network_id    = "${data.azurerm_virtual_network.vnet1.id}"
+  allow_virtual_network_access = "${var.allow_virtual_network_access}"
+  allow_forwarded_traffic      = "${var.allow_forwarded_traffic}"
+  use_remote_gateways          = "${var.use_remote_gateways}"
+  provider                     = "azurerm.sub2"
+  count                        = "${var.allow_cross_subscription_peering ? 1 : 0}"
 }
