@@ -1,15 +1,15 @@
 variable "vnet_peering_names" {
-  type        = "list"
+  type        = list(string)
   description = "Name of the virtual network peerings to created in both virtual networks provided in list format."
 }
 
 variable "vnet_names" {
-  type        = "list"
+  type        = list(string)
   description = "Names of the both virtual networks peered provided in list format."
 }
 
 variable "resource_group_names" {
-  type        = "list"
+  type        = list(string)
   description = "Names of both Resources groups of the respective virtual networks provided in list format"
 }
 
@@ -19,7 +19,7 @@ variable allow_cross_subscription_peering {
 }
 
 variable "subscription_ids" {
-  type        = "list"
+  type        = list(string)
   description = "List of two subscription ID's provided in cause of allow_cross_subscription_peering set to true."
   default     = ["", ""]
 }
@@ -46,7 +46,7 @@ variable "use_remote_gateways" {
 
 variable "tags" {
   description = "The tags to associate with your network and subnets."
-  type        = "map"
+  type        = map
 
   default = {
     tag1 = ""
