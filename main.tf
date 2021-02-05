@@ -34,7 +34,6 @@ resource "azurerm_virtual_network_peering" "vnet_peer_1" {
   remote_virtual_network_id    = data.azurerm_virtual_network.vnet2.id
   allow_virtual_network_access = var.allow_virtual_network_access
   allow_forwarded_traffic      = var.allow_forwarded_traffic
-  use_remote_gateways          = var.use_remote_gateways
 }
 
 resource "azurerm_virtual_network_peering" "vnet_peer_2" {
@@ -44,5 +43,6 @@ resource "azurerm_virtual_network_peering" "vnet_peer_2" {
   remote_virtual_network_id    = data.azurerm_virtual_network.vnet1.id
   allow_virtual_network_access = var.allow_virtual_network_access
   allow_forwarded_traffic      = var.allow_forwarded_traffic
+  allow_gateway_transit        = var.allow_gateway_transit
   use_remote_gateways          = var.use_remote_gateways
 }
