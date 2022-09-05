@@ -39,8 +39,13 @@ variable "allow_gateway_transit" {
   default     = true
 }
 
-variable "use_remote_gateways" {
-  description = "(Optional) Controls if remote gateways can be used on the local virtual network. If the flag is set to true, and allow_gateway_transit on the remote peering is also true, virtual network will use gateways of remote virtual network for transit. Defaults to false."
+variable "use_remote_gateways_outbound" {
+  description = "(Optional) Controls if remote gateways can be used on the local network - only peer1 to peer2"
+  default     = false
+}
+
+variable "use_remote_gateways_inbound" {
+  description = "(Optional) Controls if remote gateways can be used on the local network - only peer2 to peer1"
   default     = false
 }
 

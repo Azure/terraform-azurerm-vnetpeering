@@ -74,8 +74,21 @@ module "vnetpeering" {
   }
 }
 
+# Create VNET peering from Second VNET to First VNET (reciprocal) - hub-spoke architecture, outbound remote gateway
+module "vnetpeering" {
+  source				= "../.."
+  vnet_peering_names                    = ["${azurerm_resource_group.spoke.name}-peer", "${azurerm_resource_group.hub.name}-peer"]
+  vnet_names                            = ["${module.vnetspoke.vnet_name}", "${module.vnethub.vnet_name}"]
+  resource_group_names                  = ["${azurerm_resource_group.spoke.name}", "${azurerm_resource_group.hub.name}"]
+  allow_virtual_network_access          = true
+  allow_forwarded_traffic               = true
+  allow_gateway_transit                 = true
+  use_remote_gateways_outbound          = true
+  use_remote_gateways_inbound           = false
+
 
 ```
+
 
 ## Test
 
